@@ -1,5 +1,4 @@
 import { login } from '@/actions/login-actions';
-import React, { useState } from 'react';
 
 export const SignupForm = () => {
     return (
