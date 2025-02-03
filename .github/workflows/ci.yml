@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  IMAGE_TAG: dev-${{ github.run_id }}-${{ github.sha }}
+
+jobs:
+  build:
+    uses:
+      ./.github/workflows/pr.yml
+    with:
+      dockerize: true
+
+  # prod-deploy:
+  #   needs: build
+  #   if: ${{ success() }}
+  #   uses: ./.github/workflows/promote.yml
+  #   secrets: inherit

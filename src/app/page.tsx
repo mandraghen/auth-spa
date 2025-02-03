@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { OIDCLogin } from "@/components/oidc-login";
 
 /* const SessionStatus = ({ username }: { username: string }) => {
