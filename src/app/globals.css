@@ -19,3 +19,15 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+header, footer {
+  background-color: var(--foreground);
+  color: var(--background);
+}
+
+@media (max-width: 640px) {
+  header, footer {
+    flex-direction: column;
+    text-align: center;
+  }
+}
