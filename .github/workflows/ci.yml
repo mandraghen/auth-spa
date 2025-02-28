@@ -4,9 +4,10 @@ on:
   push:
     branches:
       - main
-
-env:
-  IMAGE_TAG: dev-${{ github.run_id }}-${{ github.sha }}
+  #temporary
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
@@ -21,9 +22,19 @@ jobs:
       id-token: write
     uses:
       ./.github/workflows/dockerize.yml
+  ##
+  print:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+  ##
 
-  # prod-deploy:
-  #   needs: build
-  #   if: ${{ success() }}
-  #   uses: ./.github/workflows/promote.yml
-  #   secrets: inherit
+  local-deploy:
+    needs: dockerize
+    uses: ./.github/workflows/promote.yml
+    with:
+      environment: local
+    secrets: inherit
