@@ -25,7 +25,7 @@ jobs:
         ref: main
 
     - name: Update Chart Values
-      run: yq --inplace '.image.tag = "sha-${{ github.sha }}"' infra/envs/${{ inputs.environment }}/apps/${{ env.APP_NAME }}//values.yaml
+      run: yq --inplace '.image.tag = "sha-${{ github.sha }}"' infra/envs/${{ inputs.environment }}/apps/${{ env.APP_NAME }}/helm/values.yaml
 
     - name: Push changes
       run: |
