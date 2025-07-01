@@ -5,7 +5,7 @@ import type {
 } from "next";
 
 import KeycloakProvider from "next-auth/providers/keycloak";
-import type { NextAuthOptions } from "next-auth";
+import type { NextAuthOptions, Session } from "next-auth";
 import { getServerSession } from "next-auth";
 
 export const authOptions = {
@@ -28,6 +28,6 @@ export function getAuthServerSession(
     | [GetServerSidePropsContext["req"], GetServerSidePropsContext["res"]]
     | [NextApiRequest, NextApiResponse]
     | []
-) {
+): Promise<Session | null> {
   return getServerSession(...args, authOptions);
 }

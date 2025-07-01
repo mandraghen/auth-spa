@@ -42,12 +42,16 @@ You can use a k8s setup I implemented in this [repo](https://github.com/mandragh
     ```bash
     yarn dev
     ```
-4. Open your browser and navigate to http://localhost:3000.
-5. You need to create a secret key to let next-auth to encrypt the token information that is sent to the client and add it to your .env.local file:
+4. Run external dependencies:
+    ```bash
+    docker compose up
+    ```
+5. Open your browser and navigate to http://localhost:3000.
+6. You need to create a secret key to let next-auth to encrypt the token information that is sent to the client and add it to your .env.local file:
     ```bash
     AUTH_SECRET==<auth_secret>
     ```
-   also you need to add the client secret that is set on keycloak:
+also you need to add the client secret that is set on keycloak:
     ```bash
     KEYCLOAK_ID=local-web #oidc client id in keycloak
     KEYCLOAK_REALM=demorealm #realm name in keycloak
